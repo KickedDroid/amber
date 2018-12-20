@@ -1,5 +1,7 @@
+import 'package:aiapp/Screens/DB.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sembast/sembast.dart';
 import './Screens/Homescreen.dart';
 import 'package:async/async.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
@@ -8,14 +10,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import './Screens/IntroPages.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:splashscreen/splashscreen.dart';
-import 'dart:io';
-import 'dart:ui';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
-void main() => runApp(new MyApp());
+void main() {
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

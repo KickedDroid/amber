@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sembast/sembast.dart';
+import './DB.dart';
 
 
 class ChatScreen extends StatefulWidget {
@@ -10,12 +12,17 @@ class ChatScreen extends StatefulWidget {
 class ChatScreenState extends State<ChatScreen> {
   final TextEditingController _chatController = new TextEditingController();
   final List<ChatMessage> _messages = <ChatMessage>[];
+  
+  Future _handleSubmit(String text) async {
 
-  void _handleSubmit(String text) {
+    Database db = await dbFactory.openDatabase(dbPath);
+    Store messageStore = db.getStore("messages");
     _chatController.clear();
       ChatMessage message = new ChatMessage(
         text: text
     );
+    
+
       
     setState(() {
        _messages.insert(0, message);
@@ -67,7 +74,7 @@ class ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-  statusBarColor: Colors.lightBlue, //or set color with: Color(0xFF0000FF)
+  statusBarColor: Colors.white, //or set color with: Color(0xFF0000FF)
   statusBarIconBrightness: Brightness.light
 )); 
     // TODO: implement build
