@@ -9,14 +9,14 @@ import 'package:scoped_model/scoped_model.dart';
 String dbPath = join(dirname(Platform.script.toFilePath()), "sample.db");
 DatabaseFactory dbFactory = databaseFactoryIo;
 
-// We use the database factory to open the database
 
-
-Future dataBase() async {
+Future dataBase(value) async {
   Database db = await dbFactory.openDatabase(dbPath);
+
+  await db.put(value, 'name');
 }
 
-class DbModel extends Model {
+class MainModel extends Model {
   String _title = '';
 
   String get title => _title;
@@ -43,3 +43,4 @@ class DbModel extends Model {
 
 
 }
+

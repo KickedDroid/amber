@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sembast/sembast.dart';
-import './DB.dart';
+import './MainModel.dart';
 
 
 class ChatScreen extends StatefulWidget {

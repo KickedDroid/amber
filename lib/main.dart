@@ -1,4 +1,4 @@
-import 'package:aiapp/Screens/DB.dart';
+import 'package:aiapp/Screens/MainModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sembast/sembast.dart';
@@ -10,6 +10,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import './Screens/IntroPages.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'package:card_settings/card_settings.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -120,24 +122,3 @@ class _SplashPageState extends State<SplashPage> {
   }
 }
 
-
-
-class SplashScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Colors.white,
-      body: new SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new SpinKitRipple(
-              size: 500.0,
-              color: Colors.amber,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}

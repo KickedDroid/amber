@@ -15,13 +15,12 @@ class Homescreen extends StatelessWidget {
   final Color sec1 = new Color(0xFF2e00a1);
   final Color prim2 = new Color(0xFF2e00a1);
   final Color sec2 = new Color(0xFFFF1D61);
-  
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<DbModel>(
-      model: DbModel(),
-          child: new Scaffold(
+    return ScopedModel<MainModel>(
+      model: MainModel(),
+      child: new Scaffold(
         backgroundColor: Colors.indigo[10],
         floatingActionButton: new FloatingActionButton(
           onPressed: () {
@@ -54,17 +53,16 @@ class Homescreen extends StatelessWidget {
                   );
                 },
               ),
-              ScopedModelDescendant<DbModel>(
-                builder: (context, child, model){
-                            return new IconButton(
+              ScopedModelDescendant<MainModel>(
+                  builder: (context, child, model) {
+                return new IconButton(
                   icon: Icon(Icons.search),
                   color: prim1,
                   iconSize: 28.0,
                   alignment: Alignment.centerLeft,
                   onPressed: () => model.setMethod('Ass Fuck'),
                 );
-                }
-              ),
+              }),
             ],
           ),
         ),
@@ -125,22 +123,10 @@ class Homescreen extends StatelessWidget {
                               new SizedBox(
                                 height: 260,
                                 width: 350,
-                                child: ScopedModelDescendant<DbModel>(
-                                  builder: (context, child, model) {
-                                                                  return new TypewriterAnimatedTextKit(
-                                    isRepeatingAnimation: false,
-                                    duration: Duration(seconds: 10),
-                                    text: [
-                                      "Hello ${model.user} how are you feeling today?",
-                                    ],
-                                    textStyle: TextStyle(
-                                        fontSize: 48.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat'),
-                                  );
-                                  }
-                                ),
+                                child: ScopedModelDescendant<MainModel>(
+                                    builder: (context, child, model) {
+                                  return typeWriterText();
+                                }),
                               ),
                               new SizedBox(
                                 height: 50.0,
@@ -148,7 +134,8 @@ class Homescreen extends StatelessWidget {
                               ),
                               new Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   new Icon(
                                     Icons.thumb_up,
@@ -189,3 +176,17 @@ class Homescreen extends StatelessWidget {
     );
   }
 }
+
+final typeWriterText = () => ScopedModelDescendant<MainModel>(
+    builder: (context, child, model) => new TypewriterAnimatedTextKit(
+          isRepeatingAnimation: false,
+          duration: Duration(seconds: 10),
+          text: [
+            "Hello ${model.user} how are you feeling today?",
+          ],
+          textStyle: TextStyle(
+              fontSize: 48.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Montserrat'),
+        ));
