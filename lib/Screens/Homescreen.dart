@@ -6,7 +6,9 @@ import 'ChatScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scoped_model/scoped_model.dart';
-import './DB.dart';
+import './MainModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Homescreen extends StatelessWidget {
   static const fontFam = 'Montserrat';
@@ -85,9 +87,8 @@ class Homescreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat'),
                       ),
-                      new CircleAvatar(
-                        backgroundColor: Colors.blue,
-                        radius: 29.0,
+                      new SpinKitPulse(
+                        color: Colors.blue,
                       )
                     ],
                   ),
@@ -103,7 +104,10 @@ class Homescreen extends StatelessWidget {
                       elevation: 0.0,
                       shadowColor: Color(0xFFFFAFBD),
                       child: new Container(
+                        height: 500.0,
+                        width: 350.0,
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
                             boxShadow: [
                               new BoxShadow(
                                   color: Color(0xFFFFAFBD),
@@ -113,9 +117,7 @@ class Homescreen extends StatelessWidget {
                             ],
                             gradient: LinearGradient(
                                 colors: [Color(0xFFffc3a0), Color(0xFFFFAFBD)]),
-                            borderRadius: BorderRadius.circular(10.0)),
-                        height: 500.0,
-                        width: 350.0,
+                            ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
