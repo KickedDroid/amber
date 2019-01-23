@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sembast/sembast.dart';
 import './MainModel.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -28,8 +27,8 @@ class ChatScreenState extends State<ChatScreen> {
         padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 24.0),
         child: Material(
           borderRadius: BorderRadius.circular(10.0),
-          shadowColor: Colors.cyan,
-          elevation: 10.0,
+          shadowColor: Colors.grey,
+          elevation: 5.0,
           child: new Container(
             margin: const EdgeInsets.symmetric(horizontal: 8.0),
             child: new Row(
@@ -62,13 +61,11 @@ class ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Color(0xFFFFAFBD), //or set color with: Color(0xFF0000FF)
-        statusBarIconBrightness: Brightness.light));
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFAFBD),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: new Column(
         children: <Widget>[

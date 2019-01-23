@@ -41,7 +41,7 @@ class Homescreen extends StatelessWidget {
           notchMargin: 10.0,
           shape: new CircularNotchedRectangle(),
           child: new Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               new IconButton(
                 icon: Icon(Icons.bubble_chart),
@@ -81,15 +81,12 @@ class Homescreen extends StatelessWidget {
                       FadeAnimatedTextKit(
                         duration: Duration(milliseconds: 5000),
                         isRepeatingAnimation: false,
-                        text: ["Hello Aidan!", "Good Evening", "Hi"],
+                        text: ["Hello!", "Let's Talk", "Home"],
                         textStyle: TextStyle(
                             fontSize: 32.0,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat'),
                       ),
-                      new SpinKitPulse(
-                        color: Colors.blue,
-                      )
                     ],
                   ),
                 ),
@@ -99,74 +96,46 @@ class Homescreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
-                    child: new Material(
-                      borderRadius: BorderRadius.circular(10.0),
-                      elevation: 0.0,
-                      shadowColor: Color(0xFFFFAFBD),
-                      child: new Container(
-                        height: 500.0,
-                        width: 350.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: [
-                              new BoxShadow(
-                                  color: Color(0xFFFFAFBD),
-                                  offset: new Offset(0.0, 10.0),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 1.0)
-                            ],
-                            gradient: LinearGradient(
-                                colors: [Color(0xFFffc3a0), Color(0xFFFFAFBD)]),
-                            ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 260,
-                                width: 350,
-                                child: ScopedModelDescendant<MainModel>(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                                          children:<Widget>[
+                                            new SpinKitPulse(
+                                              color: Colors.pink,
+                                            ),
+                                            new Material(
+                        borderRadius: BorderRadius.circular(10.0),
+                        elevation: 0.0,
+                        shadowColor: Color(0xFFFFAFBD),
+                        child: new Container(
+                          height: 100.0,
+                          width: 300.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                              boxShadow: [
+                                new BoxShadow(
+                                    color: Color(0xFFFFAFBD),
+                                    offset: new Offset(0.0, 10.0),
+                                    blurRadius: 10.0,
+                                    spreadRadius: 1.0)
+                              ],
+                              gradient: LinearGradient(
+                                  colors: [Color(0xFFffc3a0), Color(0xFFFFAFBD)]),
+                              ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: <Widget>[
+                                ScopedModelDescendant<MainModel>(
                                     builder: (context, child, model) {
                                   return typeWriterText();
                                 }),
-                              ),
-                              new SizedBox(
-                                height: 50.0,
-                                width: 20.0,
-                              ),
-                              new Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  new Icon(
-                                    Icons.thumb_up,
-                                    color: Colors.white,
-                                    size: 72.0,
-                                  ),
-                                  new Icon(
-                                    Icons.thumb_down,
-                                    color: Colors.white,
-                                    size: 72.0,
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: new Text(
-                                  'Tell me a bit about how you feel and maybe I can help.',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300,
-                                      fontFamily: 'Montserrat'),
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
+                      )
+                                          ] ,
                     ),
                   ),
                 )
@@ -182,12 +151,12 @@ class Homescreen extends StatelessWidget {
 final typeWriterText = () => ScopedModelDescendant<MainModel>(
     builder: (context, child, model) => new TypewriterAnimatedTextKit(
           isRepeatingAnimation: false,
-          duration: Duration(seconds: 10),
+          duration: Duration(seconds: 5),
           text: [
             "Hello ${model.user} how are you feeling today?",
           ],
           textStyle: TextStyle(
-              fontSize: 48.0,
+              fontSize: 24.0,
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontFamily: 'Montserrat'),

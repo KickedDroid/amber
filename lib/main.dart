@@ -1,7 +1,6 @@
 import 'package:aiapp/Screens/MainModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sembast/sembast.dart';
 import './Screens/Homescreen.dart';
 import 'package:async/async.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
